@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const { readFileSync, promises: fsPromises } = require("fs");
+const port = process.env.PORT || 5000;
 
 function syncReadFile(filename) {
   const contents = readFileSync(filename, "utf-8");
@@ -25,6 +26,6 @@ app.get("/api", (req, res) => {
   res.json({ words: compatableWords });
 });
 
-app.listen(5000, () => {
+app.listen(port, () => {
   console.log("listening on port 5000");
 });
